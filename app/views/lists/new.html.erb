@@ -1,0 +1,7 @@
+<h1>Create a new list</h1>
+<%= simple_form_for [@list] do |f| %>
+  <%= f.input :name, placeholder: 'Dramas' %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Cancel", lists_path %>

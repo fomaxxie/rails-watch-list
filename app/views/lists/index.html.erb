@@ -1,0 +1,8 @@
+<h1>List</h1>
+<ul class="list-unstyled">
+    <% @lists.each do |list| %>
+      <li><%= list.name %> <%= link_to "See all movies", list_path(list) %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Create a new list", new_list_path %>

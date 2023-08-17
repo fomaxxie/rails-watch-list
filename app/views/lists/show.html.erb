@@ -1,0 +1,10 @@
+<h1><%=@list.name%></h1>
+<ul class="list-unstyled">
+    <% @list.movies.each do |movie| %>
+      <li><%= movie.title %> ◉ <%= movie.rating%>
+      <%# <%= movie.bookmarks.find_by(list_id: list.id).comment%></li> %>
+    <% end %>
+</ul>
+
+
+<%= link_to "Add a new movie", new_list_bookmark_path(@list) %>
