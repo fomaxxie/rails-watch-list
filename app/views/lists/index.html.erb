@@ -1,7 +1,8 @@
 <h1>List</h1>
 <ul class="list-unstyled">
     <% @lists.each do |list| %>
-      <li><%= list.name %> <%= link_to "See all movies", list_path(list) %></li>
+      <li><%= list.name %> <%= link_to "See this list", list_path(list) %>
+      <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
     <% end %>
 </ul>
 
