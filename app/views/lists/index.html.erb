@@ -1,21 +1,39 @@
-<h1>List</h1>
-<ul class="list-unstyled">
+<div class="d-flex justify-content-between">
+  <img src="https://img.freepik.com/premium-vector/popcorn-striped-tub_157999-54.jpg?w=2000" class="avatar avatar-xs" data-titi="toto">
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);">
+  <div class="container">
+    <h1>Make your own movie list!</h1>
+    <p>Add your favorite movies.</p>
+    <%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<ul class="card d-flex justify-content-between p-2 align-items-center">
     <% @lists.each do |list| %>
-      <li class="card-category">
+      <li class="list-group-item my-2" style="width: 18rem;">
       <% if list.photo.attached? %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-        url('<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>')">
-        <%= list.name %> <%= link_to "See this list", list_path(list) %>
-        <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          url('<%= cl_image_path list.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <%= link_to list.name, list_path(list), class: "text-decoration-none text-reset" %>
+          <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none" %>
         </div>
       <% else %>
         <div class="card-category" style="background-image: url('<%= image_path "pic20.jpg" %>')">
-        <%= list.name %> <%= link_to "See this list", list_path(list) %>
-        <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <%= link_to list.name, list_path(list), class: "text-decoration-none text-reset"%>
+          <%= link_to "🗑️", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none"%>
         </div>
       <% end %>
       </li>
   <% end %>
 </ul>
 
-<%= link_to "Create a new list", new_list_path %>
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://github.com/fomaxxie/rails-watch-list"><i class="fab fa-github"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This web app is made with <i class="fas fa-heart"></i> by fomaxxie
+  </div>
+</div>
